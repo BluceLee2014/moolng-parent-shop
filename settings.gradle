@@ -1,0 +1,6 @@
+rootProject.name = 'moolng-parent-shop'
+include 'moolng-eureka'
+include 'moolng-order'
+include 'moolng-integral'
+include 'moolng-tools-mq'
+include 'moolng-elasticsearch'

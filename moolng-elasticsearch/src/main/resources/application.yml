@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: moolng-elasticsearch
+server:
+  port: 8089  #服务端口号

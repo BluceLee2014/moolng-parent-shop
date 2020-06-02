@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moolng.integral.mapper.IntegralMapper">
+
+    <!-- 新增 -->
+    <insert id="saveIntegral">
+        insert into integral (`user_id`, `num`)
+        values
+        (1,10)
+    </insert>
+</mapper>

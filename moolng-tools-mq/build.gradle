@@ -1,0 +1,17 @@
+dependencies {
+//    compile 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+//    compile 'org.springframework.cloud:spring-cloud-starter-config'
+//    compile 'org.springframework.cloud:spring-cloud-starter'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+//    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+//    compile project(":moolng-lock")
+
+    compile group: 'org.apache.rocketmq', name: 'rocketmq-client', version: '4.4.0'
+}
+
+jar {
+    manifest {
+//        attributes 'Main-Class': 'com.moolng.order.MoolngOrderApplication'
+    }
+}

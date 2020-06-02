@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moolng.order.mapper.OrderMapper">
+
+    <!-- 新增 -->
+    <insert id="saveOrder">
+        insert into `order` (`user_id`, `num`)
+        values
+        (1,10)
+    </insert>
+
+    <insert id="initDB">
+        insert into user(user_name, password, email) values
+        <foreach collection="userList" item="user" separator=",">
+            (#{user.userName}, #{user.password}, #{user.email})
+        </foreach>
+    </insert>
+</mapper>

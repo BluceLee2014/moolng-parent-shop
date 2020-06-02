@@ -1,0 +1,65 @@
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    }
+    dependencies {
+
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        //classpath "se.transmode.gradle:gradle-docker:${transmodeGradleDockerVersion}"
+    }
+}
+
+allprojects {
+//    apply plugin: 'org.springframework.boot'
+//    apply plugin: 'idea'
+//    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'war'
+//    apply plugin: 'jar'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'com.moolng'
+    version = '0.0.1-SNAPSHOT'
+//    sourceCompatibility = 1.8
+//    targetCompatibility = 1.8
+
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    }
+
+    // 公用jar 复用（子模块可以直接使用）
+    dependencies {
+//        testCompile "org.springframework.boot:spring-boot-starter-test"
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+
+        compile group: 'com.alibaba', name: 'druid', version: '1.1.22'
+        compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.2'
+        compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
+        providedCompile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+
+        compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+        compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+        testCompile group: 'junit', name: 'junit', version: '4.13'
+
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '2.2.5.RELEASE'
+
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+
+
+    }
+    //这里一定得要。在多模块下，不然编译失败，因为不会把信赖模块给打包。
+    jar {
+        enabled = true
+    }
+}
