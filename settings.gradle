@@ -4,3 +4,7 @@ include 'moolng-order'
 include 'moolng-integral'
 include 'moolng-tools-mq'
 include 'moolng-elasticsearch'
+include 'moolng-test'
+include 'moolng-mybatis-plus-generator'
+include 'moolng-mybatis-plus-demo'
+
