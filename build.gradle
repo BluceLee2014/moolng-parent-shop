@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
     }
     dependencies {
 
@@ -28,7 +28,7 @@ allprojects {
 
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
     }
 
     // 公用jar 复用（子模块可以直接使用）
@@ -41,14 +41,27 @@ allprojects {
         compile group: 'com.alibaba', name: 'druid', version: '1.1.22'
         compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.2'
         compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.19'
-        providedCompile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+//        providedCompile group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+        // TODO 有待研究 否则提示如下错误信息
+        // 错误: 找不到符号
+        // 符号:   方法 getPageNo()
+        // 位置: 类型为PageAO的变量 pageAO
+        annotationProcessor 'org.projectlombok:lombok:1.18.2'
+        compileOnly 'org.projectlombok:lombok:1.18.2'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
+        testCompileOnly 'org.projectlombok:lombok:1.18.2'
 
         compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
         compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
         testCompile group: 'junit', name: 'junit', version: '4.13'
 
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '2.2.5.RELEASE'
+        compile 'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.13'
 
+        compile 'com.alibaba:druid-spring-boot-starter:1.1.22'
+        compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3'
+        compile 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+        compile 'com.alibaba:fastjson:1.2.70'
     }
 
     dependencyManagement {

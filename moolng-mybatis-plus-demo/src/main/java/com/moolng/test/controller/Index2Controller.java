@@ -1,9 +1,6 @@
 package com.moolng.test.controller;
 
 
-import com.alibaba.fastjson.JSONArray;
-import com.github.pagehelper.Page;
-import com.moolng.test.entity.SysAttendanceRecord;
 import com.moolng.test.entity.ao.UserAO;
 import com.moolng.test.service.ISysAttendanceRecordService;
 import io.swagger.annotations.Api;
@@ -12,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * <p>
@@ -25,21 +20,22 @@ import java.util.List;
  */
 @Api
 @RestController
-@RequestMapping("/test/")
-public class SysAttendanceRecordController {
+@RequestMapping("/index2/")
+public class Index2Controller {
 
     @Autowired
     ISysAttendanceRecordService iSysAttendanceRecordService;
 
-    @ApiOperation("列表")
-    @GetMapping(value = "/list")
+    @ApiOperation("测试连接222")
+    @GetMapping(value = "/list222")
     public String index(UserAO userAO){
-        Page<SysAttendanceRecord> reultPage = iSysAttendanceRecordService.findAll(userAO);
-        for(SysAttendanceRecord record : reultPage.getResult()){
-            System.out.println(record.getId());
-        }
-        String resultVal = JSONArray.toJSONString(reultPage.getResult());
-        System.out.println(resultVal);
+        String resultVal = "/index/list";
+//        Page<SysAttendanceRecord> reultPage = iSysAttendanceRecordService.findAll(userAO);
+//        for(SysAttendanceRecord record : reultPage.getResult()){
+//            System.out.println(record.getId());
+//        }
+//        String resultVal = JSONArray.toJSONString(reultPage.getResult());
+//        System.out.println(resultVal);
         return resultVal;
     }
 
