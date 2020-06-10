@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.moolng.test.entity.SysAttendanceRecord;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.moolng.test.entity.ao.UserAO;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
  */
 public interface ISysAttendanceRecordService extends IService<SysAttendanceRecord> {
 
+    @GetMapping("/我是你的注解pageListGetMapperAnnotation")
     Page<SysAttendanceRecord> findAll(UserAO userAO);
 
 }
